@@ -1,0 +1,137 @@
+/* ========================================================
+   학급 윤독도서 관리 시스템 스타일시트
+   ======================================================== */
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+* {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f8fafc;
+  color: #1e293b;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 고정 헤더와 좌측 학생 열을 위한 Sticky 설정 */
+.table-container {
+  max-height: calc(100vh - 200px);
+  overflow: auto;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+.table-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 4px;
+}
+
+/* 좌상단 모서리 고정 */
+th.corner-cell {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  background-color: #f1f5f9;
+}
+
+/* 상단 책 헤더 고정 */
+thead th.book-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: #ffffff;
+}
+
+/* 좌측 학생 열 고정 */
+tbody th.student-header {
+  position: sticky;
+  left: 0;
+  z-index: 10;
+  background-color: #ffffff;
+}
+
+/* 이번 주 할당 도서 셀 하이라이트 */
+.cell-current-assignment {
+  background-color: #fef3c7 !important; /* 부드러운 노란색 하이라이트 */
+  position: relative;
+  border: 2px solid #f59e0b !important;
+}
+
+.cell-current-assignment::after {
+  content: '이번주';
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-size: 9px;
+  font-weight: 700;
+  color: #b45309;
+  background-color: #fde68a;
+  padding: 1px 4px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* 완독 체크 상태 스타일 */
+.cell-read-completed {
+  background-color: #dcfce7 !important; /* 연한 초록색 */
+}
+
+.cell-read-completed .check-icon {
+  transform: scale(1.1);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 카드 터치 인터랙션 */
+.book-card-btn {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.book-card-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.book-card-btn:active {
+  transform: scale(0.97);
+}
+
+/* 모달 애니메이션 */
+.modal-backdrop {
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
